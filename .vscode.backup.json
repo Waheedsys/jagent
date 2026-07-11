@@ -1,0 +1,13 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug AI Agent (UV Envt)",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/agent.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ]
+}

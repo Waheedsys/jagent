@@ -7,3 +7,4 @@ class ScoreRequest(BaseModel):
     job_description: str
     resume_summary: str
     fit_score: Optional[float] = None
+    company_domain: Optional[str] = None

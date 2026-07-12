@@ -11,6 +11,7 @@ class Settings(BaseSettings):
     langsmith_tracing: bool = False
     langsmith_api_key: str | None = None
     langsmith_project: str | None = None
+    candidate_name:str | None = None
 
     class Config:
         env_file = ".env"

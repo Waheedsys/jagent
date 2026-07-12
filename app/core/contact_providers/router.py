@@ -1,11 +1,10 @@
 from .hunter import HunterProvider
-from .apollo import ApolloProvider
 from .base import ContactResult
 import httpx
 
 class ContactFinderRouter:
     def __init__(self):
-        self.providers = [HunterProvider(), ApolloProvider()]  # order = preference
+        self.providers = [HunterProvider()]  # order = preference
 
     async def find_contact(self, company_domain: str, titles: list[str]) -> ContactResult | None:
         for provider in self.providers:

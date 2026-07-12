@@ -2,14 +2,16 @@ from langgraph.graph import StateGraph, END
 from app.agents.state import OutreachState
 from app.agents.nodes.score_fit import score_fit_node
 from app.agents.nodes.find_contact import find_contact_node
+from app.agents.nodes.draft_email import draft_email_node
 
 def route_after_score(state: OutreachState):
-    if state["fit_score"] is not None and state["fit_score"] > 0.7:
+    if state["fit_score"] is not None and state["fit_score"] > 0.3:
         return "good"
     return "bad"
 
 graph = StateGraph(OutreachState)
 graph.add_node("find_contact", find_contact_node)
+graph.add_node("draft_email", draft_email_node)
 graph.add_node("score_fit", score_fit_node)
 graph.set_entry_point("score_fit")
 graph.add_conditional_edges(
@@ -20,6 +22,7 @@ graph.add_conditional_edges(
         "bad": END,
     },
 )
-graph.add_edge("find_contact", END)
+graph.add_edge("find_contact", "draft_email")
+graph.add_edge("draft_email", END)
 
 app_graph = graph.compile()

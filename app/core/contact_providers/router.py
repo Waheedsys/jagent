@@ -1,10 +1,11 @@
 from .hunter import HunterProvider
+from .prospeo import ProspeoProvider
 from .base import ContactResult
 import httpx
 
 class ContactFinderRouter:
     def __init__(self):
-        self.providers = [HunterProvider()]  # order = preference
+        self.providers = [ProspeoProvider()]  # order = preference
 
     async def find_contact(self, company_domain: str, titles: list[str]) -> ContactResult | None:
         for provider in self.providers:

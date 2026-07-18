@@ -1,4 +1,3 @@
-# app/core/contact_providers/hunter.py
 import httpx
 from app.config import settings
 from .base import ContactProvider, ContactResult

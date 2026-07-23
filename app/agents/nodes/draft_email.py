@@ -62,7 +62,9 @@ async def draft_email_node(state: dict) -> dict:
             job_description=state["job_description"],
             recruiter_name=state.get("recruiter_name") or "there",
             human_feedback=state.get("human_feedback") or "None — first draft",
-        )
+        ),
+        model_name="gpt-oss:120b-cloud", provider="ollama_cloud"
+
     )
 
     subject = await call_llm(

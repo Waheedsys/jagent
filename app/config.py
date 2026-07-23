@@ -13,6 +13,7 @@ class Settings(BaseSettings):
     langsmith_project: str | None = None
     candidate_name:str | None = None
     prospeo_api_key: str
+    ollama_api_key:str
 
     class Config:
         env_file = ".env"
